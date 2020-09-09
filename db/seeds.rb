@@ -8,11 +8,11 @@ Kitty.destroy_all
 User.destroy_all
 Toy.destroy_all
 
-mouse = Toy.create(name: "Mouse", type: "Soft Mouse")
-bell = Toy.create(name: "Bell-ball", type: "Makes noise")
-stick = Toy.create(name: "Pheasant ", type: "Want")
-laser = Toy.create(name: "Laser Pointer", type: "Laser Pointer")
-ball = Toy.create(name: "Red Ball", type: "ball")
+mouse = Toy.create(name: "Mouse")
+bell = Toy.create(name: "Bell-ball")
+stick = Toy.create(name: "Pheasant ")
+laser = Toy.create(name: "Laser Pointer")
+ball = Toy.create(name: "Red Ball")
 
 
 puts "done"
