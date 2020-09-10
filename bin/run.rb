@@ -1,13 +1,12 @@
 require "tty-prompt"
 require 'date'
 
-
-
 require_relative "../config/environment.rb"
 
 system("clear")
 
 def logo 
+
 #     puts "                                                                                                                                                                                                                                                                                                                                            
 # NNNNNNNN        NNNNNNNEEEEEEEEEEEEEEEEEEEEEE    OOOOOOOOO    KKKKKKKKK    KKKKKKK iiii         tttt              tttt           iiii                                     
 # N:::::::N       N::::::E::::::::::::::::::::E  OO:::::::::OO  K:::::::K    K:::::Ki::::i     ttt:::t           ttt:::t          i::::i                                    
@@ -343,7 +342,7 @@ def play_with_toy
     happy = get_happiness
     happy += 4
     Kitty.update(happiness: happy)
-    puts "Your kitty is very happy at level #{happy}\n\n\n"
+    puts "Your kitty loved the playtime! The happiness level has raised to #{happy}\n\n\n"
     sub_menu
 end
 
@@ -396,7 +395,7 @@ def put_kitty
     alive: #{Kitty.find(1).alive}
     Hungry: #{Kitty.find(1).hungry}
     Happiness level: #{Kitty.find(1).happiness}
-    Time_fed: #{Kitty.find(1).time_fed}\n\n\n"
+    Time_fed: #{Kitty.find(1).time_fed}\n\n".blue
     sub_menu
 end
 
