@@ -3,36 +3,150 @@ require 'date'
 
 
 
-
 require_relative "../config/environment.rb"
 
 system("clear")
 
 def logo 
-    puts "                                                                                                                                                                                                                                                                                                                                            
-NNNNNNNN        NNNNNNNEEEEEEEEEEEEEEEEEEEEEE    OOOOOOOOO    KKKKKKKKK    KKKKKKK iiii         tttt              tttt           iiii                                     
-N:::::::N       N::::::E::::::::::::::::::::E  OO:::::::::OO  K:::::::K    K:::::Ki::::i     ttt:::t           ttt:::t          i::::i                                    
-N::::::::N      N::::::E::::::::::::::::::::EOO:::::::::::::OOK:::::::K    K:::::K iiii      t:::::t           t:::::t           iiii                                     
-N:::::::::N     N::::::EE::::::EEEEEEEEE::::O:::::::OOO:::::::K:::::::K   K::::::K           t:::::t           t:::::t                                                    
-N::::::::::N    N::::::N E:::::E       EEEEEO::::::O   O::::::KK::::::K  K:::::KKiiiiiittttttt:::::ttttttttttttt:::::ttttttt   iiiiiii    eeeeeeeeeeee       ssssssssss   
-N:::::::::::N   N::::::N E:::::E            O:::::O     O:::::O K:::::K K:::::K  i:::::t:::::::::::::::::t:::::::::::::::::t   i:::::i  ee::::::::::::ee   ss::::::::::s  
-N:::::::N::::N  N::::::N E::::::EEEEEEEEEE  O:::::O     O:::::O K::::::K:::::K    i::::t:::::::::::::::::t:::::::::::::::::t    i::::i e::::::eeeee:::::ess:::::::::::::s 
-N::::::N N::::N N::::::N E:::::::::::::::E  O:::::O     O:::::O K:::::::::::K     i::::tttttt:::::::ttttttttttt:::::::tttttt    i::::ie::::::e     e:::::s::::::ssss:::::s
-N::::::N  N::::N:::::::N E:::::::::::::::E  O:::::O     O:::::O K:::::::::::K     i::::i     t:::::t           t:::::t          i::::ie:::::::eeeee::::::es:::::s  ssssss 
-N::::::N   N:::::::::::N E::::::EEEEEEEEEE  O:::::O     O:::::O K::::::K:::::K    i::::i     t:::::t           t:::::t          i::::ie:::::::::::::::::e   s::::::s      
-N::::::N    N::::::::::N E:::::E            O:::::O     O:::::O K:::::K K:::::K   i::::i     t:::::t           t:::::t          i::::ie::::::eeeeeeeeeee       s::::::s   
-N::::::N     N:::::::::N E:::::E       EEEEEO::::::O   O::::::KK::::::K  K:::::KKKi::::i     t:::::t    tttttt t:::::t    tttttti::::ie:::::::e          ssssss   s:::::s 
-N::::::N      N::::::::EE::::::EEEEEEEE:::::O:::::::OOO:::::::K:::::::K   K::::::i::::::i    t::::::tttt:::::t t::::::tttt:::::i::::::e::::::::e         s:::::ssss::::::s
-N::::::N       N:::::::E::::::::::::::::::::EOO:::::::::::::OOK:::::::K    K:::::i::::::i    tt::::::::::::::t tt::::::::::::::i::::::ie::::::::eeeeeeee s::::::::::::::s 
-N::::::N        N::::::E::::::::::::::::::::E  OO:::::::::OO  K:::::::K    K:::::i::::::i      tt:::::::::::tt   tt:::::::::::ti::::::i ee:::::::::::::e  s:::::::::::ss  
-NNNNNNNN         NNNNNNEEEEEEEEEEEEEEEEEEEEEE    OOOOOOOOO    KKKKKKKKK    KKKKKKiiiiiiii        ttttttttttt       ttttttttttt iiiiiiii   eeeeeeeeeeeeee   sssssssssss    
-\n".colorize(:blue)
+#     puts "                                                                                                                                                                                                                                                                                                                                            
+# NNNNNNNN        NNNNNNNEEEEEEEEEEEEEEEEEEEEEE    OOOOOOOOO    KKKKKKKKK    KKKKKKK iiii         tttt              tttt           iiii                                     
+# N:::::::N       N::::::E::::::::::::::::::::E  OO:::::::::OO  K:::::::K    K:::::Ki::::i     ttt:::t           ttt:::t          i::::i                                    
+# N::::::::N      N::::::E::::::::::::::::::::EOO:::::::::::::OOK:::::::K    K:::::K iiii      t:::::t           t:::::t           iiii                                     
+# N:::::::::N     N::::::EE::::::EEEEEEEEE::::O:::::::OOO:::::::K:::::::K   K::::::K           t:::::t           t:::::t                                                    
+# N::::::::::N    N::::::N E:::::E       EEEEEO::::::O   O::::::KK::::::K  K:::::KKiiiiiittttttt:::::ttttttttttttt:::::ttttttt   iiiiiii    eeeeeeeeeeee       ssssssssss   
+# N:::::::::::N   N::::::N E:::::E            O:::::O     O:::::O K:::::K K:::::K  i:::::t:::::::::::::::::t:::::::::::::::::t   i:::::i  ee::::::::::::ee   ss::::::::::s  
+# N:::::::N::::N  N::::::N E::::::EEEEEEEEEE  O:::::O     O:::::O K::::::K:::::K    i::::t:::::::::::::::::t:::::::::::::::::t    i::::i e::::::eeeee:::::ess:::::::::::::s 
+# N::::::N N::::N N::::::N E:::::::::::::::E  O:::::O     O:::::O K:::::::::::K     i::::tttttt:::::::ttttttttttt:::::::tttttt    i::::ie::::::e     e:::::s::::::ssss:::::s
+# N::::::N  N::::N:::::::N E:::::::::::::::E  O:::::O     O:::::O K:::::::::::K     i::::i     t:::::t           t:::::t          i::::ie:::::::eeeee::::::es:::::s  ssssss 
+# N::::::N   N:::::::::::N E::::::EEEEEEEEEE  O:::::O     O:::::O K::::::K:::::K    i::::i     t:::::t           t:::::t          i::::ie:::::::::::::::::e   s::::::s      
+# N::::::N    N::::::::::N E:::::E            O:::::O     O:::::O K:::::K K:::::K   i::::i     t:::::t           t:::::t          i::::ie::::::eeeeeeeeeee       s::::::s   
+# N::::::N     N:::::::::N E:::::E       EEEEEO::::::O   O::::::KK::::::K  K:::::KKKi::::i     t:::::t    tttttt t:::::t    tttttti::::ie:::::::e          ssssss   s:::::s 
+# N::::::N      N::::::::EE::::::EEEEEEEE:::::O:::::::OOO:::::::K:::::::K   K::::::i::::::i    t::::::tttt:::::t t::::::tttt:::::i::::::e::::::::e         s:::::ssss::::::s
+# N::::::N       N:::::::E::::::::::::::::::::EOO:::::::::::::OOK:::::::K    K:::::i::::::i    tt::::::::::::::t tt::::::::::::::i::::::ie::::::::eeeeeeee s::::::::::::::s 
+# N::::::N        N::::::E::::::::::::::::::::E  OO:::::::::OO  K:::::::K    K:::::i::::::i      tt:::::::::::tt   tt:::::::::::ti::::::i ee:::::::::::::e  s:::::::::::ss  
+# NNNNNNNN         NNNNNNEEEEEEEEEEEEEEEEEEEEEE    OOOOOOOOO    KKKKKKKKK    KKKKKKiiiiiiii        ttttttttttt       ttttttttttt iiiiiiii   eeeeeeeeeeeeee   sssssssssss    
+# \n".colorize(:blue)
+# end
+
+    art= <<-ARTWORK
+
+  
+███╗   ██╗███████╗ ██████╗ ██╗  ██╗██╗████████╗████████╗██╗███████╗███████╗
+████╗  ██║██╔════╝██╔═══██╗██║ ██╔╝██║╚══██╔══╝╚══██╔══╝██║██╔════╝██╔════╝
+██╔██╗ ██║█████╗  ██║   ██║█████╔╝ ██║   ██║      ██║   ██║█████╗  ███████╗
+██║╚██╗██║██╔══╝  ██║   ██║██╔═██╗ ██║   ██║      ██║   ██║██╔══╝  ╚════██║
+██║ ╚████║███████╗╚██████╔╝██║  ██╗██║   ██║      ██║   ██║███████╗███████║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   ╚═╝╚══════╝╚══════╝
+                                                                           
+
+    ARTWORK
+    puts art.colorize(:blue)
+end
+
+def middle_logo
+    art= <<-ARTWORK
+    |\---/|
+    | ,_, |
+     \_`_/-..----.
+  ___/ `   ' ,""+ \  
+ (__...'   __\    |`.___.';
+   (_,...'(_,.`__)/'.....+
+
+    ARTWORK
+    puts art.colorize(:white)
+end
+
+def bottom_text
+    puts "A game where users can create, play and take care of kitties :)\n\n".colorize(:blue)
+end
+
+def create_kitty_logo
+
+    art= <<-ARTWORK
+   
+
+               .__....._             _.....__,
+                 .": o :':         ;': o :".
+                 `. `-' .'.       .'. `-' .'
+                   `---'             `---'
+
+         _...----...      ...   ...      ...----..._
+      .-'__..-""'----    `.  `"`  .'    ----'""-..__`-.
+     '.-'   _.--"""'       `-._.-'       '"""--._   `-.`
+     '  .-"'                  :                  `"-.  `
+       '   `.              _.'"'._              .'   `
+             `.       ,.-'"       "'-.,       .'
+               `.                           .'
+                 `-._                   _.-'
+                     `"'--...___...--'"`
+
+ARTWORK
+puts art.colorize(:white) 
+end
+
+def play_logo
+    art=<<-ARTWORK
+                  _                        
+                  \`*-.                    
+                   )  _`-.                 
+                  .  : `. .                
+                  : _   '  \               
+                  ; *` _.   `*-._          
+                  `-.-'          `-.       
+                    ;       `       `.     
+                    :.       .        \    
+                    . \  .   :   .-'   .   
+                    '  `+.;  ;  '      :   
+                    :  '  |    ;       ;-. 
+                    ; '   : :`-:     _.`* ;
+              [bug] .*' /  .*' ; .*`- +'  `*' 
+                 `*-*   `*-*  `*-*'
+    ARTWORK
+
+    puts art.colorize(:yellow)
+end
+
+def exit_logo
+    art=<<-ARTWORK
+
+██████╗ ██╗   ██╗███████╗
+██╔══██╗╚██╗ ██╔╝██╔════╝
+██████╔╝ ╚████╔╝ █████╗  
+██╔══██╗  ╚██╔╝  ██╔══╝  
+██████╔╝   ██║   ███████╗
+╚═════╝    ╚═╝   ╚══════╝
+                         
+
+    ARTWORK
+
+    puts art.colorize(:blue)
+end
+
+def del_logo
+    art= <<-ARTWORK
+                  ___
+                  ,_    '---'    _,
+                  \ `-._|\_/|_.-' /
+                   |   =)'T'(=   |
+                    \   /`"`\   /
+                     '._\) (/_.'
+                         | |
+                        /\ /\
+                        \ T /
+                        (/ \)\
+                             ))
+                            ((
+                             \)
+    ARTWORK
+    puts art.colorize(:white)
 end
 ##################################landing page##########################
 def welcome
     logo 
+    middle_logo
+    bottom_text
     puts "Welcome to NEOKitty"
-    sleep(1)
+    sleep(3)
     create_account
 end
 
@@ -40,6 +154,8 @@ end
 def create_account
     system('clear')
     logo
+    middle_logo
+    bottom_text
     prompt = TTY::Prompt.new
     ans1 = prompt.select("Would you like to make an account?") do |menu|
         menu.choice "Yes"
@@ -48,10 +164,12 @@ def create_account
     if ans1 == "Yes"
         system('clear')
         logo
+        middle_logo
         puts "Please enter your name: "
         ans2 = gets.chomp
         system('clear')
         logo
+        middle_logo
         puts "Please enter a username: "
         ans3= gets.chomp
         @user_created = User.create(name: "#{ans2}", username: "#{ans3}")
@@ -70,6 +188,7 @@ end
 def check_feed
     system('clear')
     logo
+    middle_logo
     prompt = TTY::Prompt.new
     ans = prompt.select("Would you like to check to see if the kitty is hungry first?") do |menu|
         menu.choice "Yes"
@@ -84,6 +203,7 @@ def check_feed
     elsif ans == 'No'
         system('clear')
         logo
+        middle_logo
         puts "You need to see if it is hungry first!!!! We are not made of fake money!!"
         sleep(3)
         system('clear')
@@ -96,6 +216,7 @@ end
 
 def feed_kitty
     logo
+    middle_logo
     prompt = TTY::Prompt.new
     ans = prompt.select("Would you like to feed the kitty?") do |menu|
         menu.choice "Yes"
@@ -104,6 +225,7 @@ def feed_kitty
     if ans == "Yes"
         system('clear')
         logo
+        middle_logo
         full = find_value_of_food
         full = false
         Kitty.update(hungry: full)
@@ -129,31 +251,31 @@ end
 def create_kitty
     prompt = TTY::Prompt.new
     system('clear')
-    logo
+    create_kitty_logo
     puts "Time to create a kitty!!\n\n"
     sleep(2)
     system('clear')
-    logo
+    create_kitty_logo
         puts "What would you like to name your kitty? "
         name= gets.chomp
         system('clear')
-        logo
+        create_kitty_logo
         color = prompt.select("What color would you like your kitty?", %w(Tabby Tortoiseshell Calico))
         system('clear')
-        logo
+        create_kitty_logo
         puts "What would your kitties catchphrase be?"
         catc= gets.chomp
         system('clear')
-        logo
+        create_kitty_logo
         breed = prompt.select("What breed would you like your kitty?", %w(American_Shorthair Maine_Coon Siamese))
         system('clear')
-        logo
+        create_kitty_logo
         coat = prompt.select("What coat would you like your kitty to have?", %w(Hairless Shorthair Longhair))
         system('clear')
-        logo
+        create_kitty_logo
         toy = prompt.yes?("Would you like to pick out a toy for your new kitty?")
         system('clear')
-        logo
+        create_kitty_logo
 
             if toy == true 
                 result= prompt.select("Please pick one:",%w(Mouse Bell-ball Pheasant Laser_Pointer Red_Ball))
@@ -184,8 +306,9 @@ def create_kitty
                     toy_id: nil, 
                     time_fed: nil)
             end
+            system('clear')
             main_menu
-    system('clear')
+    # system('clear')
 end
 
 
@@ -216,7 +339,7 @@ end
 
 def play_with_toy
     system('clear')
-    logo
+    play_logo
     happy = get_happiness
     happy += 4
     Kitty.update(happiness: happy)
@@ -228,6 +351,7 @@ end
 
 def delete_user
     logo
+    middle_logo
     puts "Would you like to delete your account?"
     puts "Please enter your name: "
     @ans1 = gets.chomp
@@ -242,6 +366,7 @@ end
 def find_kitty
     system('clear')
     logo
+    middle_logo
     puts "What is the name of the kitty you are looking for? "
     @ans = gets.chomp
     
@@ -250,6 +375,7 @@ def find_kitty
 
     if kitty == nil
         logo 
+        middle_logo
         puts "No kitty found by that name. Please try again"
         sub_menu
     elsif @ans == kitty.name
@@ -259,6 +385,7 @@ end
 
 def put_kitty
     logo
+    middle_logo
     
     puts "
     Name: #{Kitty.find(1).name}
@@ -304,6 +431,7 @@ end
 ##################################main_menu##########################
 def main_menu
     logo
+    middle_logo
     prompt = TTY::Prompt.new
     choices = prompt.select("What would you like to do?") do |menu|
         menu.choice 'Play with Kitty'
@@ -335,8 +463,7 @@ end
 
 def exit
     system('clear')
-    logo
-    puts "Goodbye!"
+    exit_logo
     sleep 3/2
     system ('exit')
     system ('clear')
