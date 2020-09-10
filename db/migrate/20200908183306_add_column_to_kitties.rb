@@ -6,5 +6,6 @@ class AddColumnToKitties < ActiveRecord::Migration[5.2]
     add_column :kitties, :happiness, :integer
     add_column :kitties, :user_id, :integer
     add_column :kitties, :toy_id, :integer
+    add_column :kitties, :time_fed, :timestamp
   end
 end

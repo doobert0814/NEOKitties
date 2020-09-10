@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_194000) do
 
   create_table "kitties", force: :cascade do |t|
     t.string "name"
-    t.integer "age"
+    t.datetime "age"
     t.string "color"
     t.string "breed"
     t.string "catchphrase"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_194000) do
     t.integer "happiness"
     t.integer "user_id"
     t.integer "toy_id"
+    t.datetime "time_fed"
   end
 
   create_table "toys", force: :cascade do |t|

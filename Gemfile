@@ -19,4 +19,8 @@ gem 'tty-progressbar'
 gem 'colorize'
 gem 'faker', '~> 1.6', '>= 1.6.3'
 gem  'rspec'
+gem 'paint'
+
+
+
 
