@@ -1,17 +1,19 @@
-Kitties.destroy_all
+require_relative "../config/environment"
+require_relative "../app/models/user.rb"
+require_relative "../app/models/kitty.rb"
+require_relative "../app/models/toy.rb"
+
+
+Kitty.destroy_all
 User.destroy_all
 Toy.destroy_all
 
-Kitties.create!([{
-    name: "Garfield",
-    age: 2, 
-    color: "Orange",
-    catchphrase: "I Hate Mondays",
-    breed: "Orange Tabby",
-    coat: "Orange",
-    alive: true,
-    fed: false,
-    happiness: (3)
-    }])
-u1 = User.create(name: "Jon", username: "odiegarfield")
+mouse = Toy.create(name: "Mouse")
+bell = Toy.create(name: "Bell-ball")
+stick = Toy.create(name: "Pheasant")
+laser = Toy.create(name: "Laser_Pointer")
+ball = Toy.create(name: "Red_Ball")
+
+
+puts "RESET"
 
