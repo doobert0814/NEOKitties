@@ -10,10 +10,10 @@ Toy.destroy_all
 
 mouse = Toy.create(name: "Mouse")
 bell = Toy.create(name: "Bell-ball")
-stick = Toy.create(name: "Pheasant ")
-laser = Toy.create(name: "Laser Pointer")
-ball = Toy.create(name: "Red Ball")
+stick = Toy.create(name: "Pheasant")
+laser = Toy.create(name: "Laser_Pointer")
+ball = Toy.create(name: "Red_Ball")
 
 
-puts "done"
+puts "RESET"
 
