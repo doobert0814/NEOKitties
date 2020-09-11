@@ -6,27 +6,6 @@ require_relative "../config/environment.rb"
 system("clear")
 
 def logo 
-
-#     puts "                                                                                                                                                                                                                                                                                                                                            
-# NNNNNNNN        NNNNNNNEEEEEEEEEEEEEEEEEEEEEE    OOOOOOOOO    KKKKKKKKK    KKKKKKK iiii         tttt              tttt           iiii                                     
-# N:::::::N       N::::::E::::::::::::::::::::E  OO:::::::::OO  K:::::::K    K:::::Ki::::i     ttt:::t           ttt:::t          i::::i                                    
-# N::::::::N      N::::::E::::::::::::::::::::EOO:::::::::::::OOK:::::::K    K:::::K iiii      t:::::t           t:::::t           iiii                                     
-# N:::::::::N     N::::::EE::::::EEEEEEEEE::::O:::::::OOO:::::::K:::::::K   K::::::K           t:::::t           t:::::t                                                    
-# N::::::::::N    N::::::N E:::::E       EEEEEO::::::O   O::::::KK::::::K  K:::::KKiiiiiittttttt:::::ttttttttttttt:::::ttttttt   iiiiiii    eeeeeeeeeeee       ssssssssss   
-# N:::::::::::N   N::::::N E:::::E            O:::::O     O:::::O K:::::K K:::::K  i:::::t:::::::::::::::::t:::::::::::::::::t   i:::::i  ee::::::::::::ee   ss::::::::::s  
-# N:::::::N::::N  N::::::N E::::::EEEEEEEEEE  O:::::O     O:::::O K::::::K:::::K    i::::t:::::::::::::::::t:::::::::::::::::t    i::::i e::::::eeeee:::::ess:::::::::::::s 
-# N::::::N N::::N N::::::N E:::::::::::::::E  O:::::O     O:::::O K:::::::::::K     i::::tttttt:::::::ttttttttttt:::::::tttttt    i::::ie::::::e     e:::::s::::::ssss:::::s
-# N::::::N  N::::N:::::::N E:::::::::::::::E  O:::::O     O:::::O K:::::::::::K     i::::i     t:::::t           t:::::t          i::::ie:::::::eeeee::::::es:::::s  ssssss 
-# N::::::N   N:::::::::::N E::::::EEEEEEEEEE  O:::::O     O:::::O K::::::K:::::K    i::::i     t:::::t           t:::::t          i::::ie:::::::::::::::::e   s::::::s      
-# N::::::N    N::::::::::N E:::::E            O:::::O     O:::::O K:::::K K:::::K   i::::i     t:::::t           t:::::t          i::::ie::::::eeeeeeeeeee       s::::::s   
-# N::::::N     N:::::::::N E:::::E       EEEEEO::::::O   O::::::KK::::::K  K:::::KKKi::::i     t:::::t    tttttt t:::::t    tttttti::::ie:::::::e          ssssss   s:::::s 
-# N::::::N      N::::::::EE::::::EEEEEEEE:::::O:::::::OOO:::::::K:::::::K   K::::::i::::::i    t::::::tttt:::::t t::::::tttt:::::i::::::e::::::::e         s:::::ssss::::::s
-# N::::::N       N:::::::E::::::::::::::::::::EOO:::::::::::::OOK:::::::K    K:::::i::::::i    tt::::::::::::::t tt::::::::::::::i::::::ie::::::::eeeeeeee s::::::::::::::s 
-# N::::::N        N::::::E::::::::::::::::::::E  OO:::::::::OO  K:::::::K    K:::::i::::::i      tt:::::::::::tt   tt:::::::::::ti::::::i ee:::::::::::::e  s:::::::::::ss  
-# NNNNNNNN         NNNNNNEEEEEEEEEEEEEEEEEEEEEE    OOOOOOOOO    KKKKKKKKK    KKKKKKiiiiiiii        ttttttttttt       ttttttttttt iiiiiiii   eeeeeeeeeeeeee   sssssssssss    
-# \n".colorize(:blue)
-# end
-
     art= <<-ARTWORK
 
   
@@ -119,25 +98,6 @@ def exit_logo
     ARTWORK
 
     puts art.colorize(:blue)
-end
-
-def del_logo
-    art= <<-ARTWORK
-                  ___
-                  ,_    '---'    _,
-                  \ `-._|\_/|_.-' /
-                   |   =)'T'(=   |
-                    \   /`"`\   /
-                     '._\) (/_.'
-                         | |
-                        /\ /\
-                        \ T /
-                        (/ \)\
-                             ))
-                            ((
-                             \)
-    ARTWORK
-    puts art.colorize(:white)
 end
 ##################################landing page##########################
 def welcome
@@ -294,7 +254,6 @@ def what_time_fed
     Kitty.where("time_fed like ?", "%#{@ans}%").first
 end
 
-
 ##################################create_kitty##########################
 def create_kitty
     prompt = TTY::Prompt.new
@@ -365,41 +324,10 @@ def get_happiness
     Kitty.where("name like ?", "%#{@ans}%").first.happiness
 end
 
-#############################current_time#####################
-
-def current_time
-    time = Time.new
-end
-#############################time limit#########################
-
-def time_limit
-
-    if math > 10
-        happy = get_happiness
-        binding.pry
-        happy -= 3
-        Kitty.update(happiness: happy)
-        full = find_value_of_food
-        full = true
-        Kitty.update(hungry: full)
-
-        puts time_limit
-    end
-
-end
-
-
 #############################time fed#########################
 
 def time_fed
     time = Kitty.where("name like ?", "%#{@ans}%").first.time_fed
-end
-
-#############################find time diff#####################
-
-def math
-    hungry = current_time - time_fed
-    puts hungry
 end
 
 ############################play with toy#####################
@@ -429,7 +357,9 @@ def delete_user
     system('clear')
     exit
 end
+
 ##################################find_kitty##########################
+
 def find_kitty
     system('clear')
     logo
@@ -474,8 +404,7 @@ def sub_menu
         menu.choice 'Feed our Kitty'
         menu.choice 'Delete Profile'
         menu.choice 'Find Kitty'
-        menu.choice 'Exit'
-        menu.choice 'time'
+        menu.choice 'Sign out'
     end
         
         if choices == 'Play with Kitty'
@@ -486,16 +415,14 @@ def sub_menu
             find_kitty
         elsif choices == 'Delete Profile'
             delete_user
-        elsif choices == 'Exit'
+        elsif choices == 'Sign out'
             exit
-        elsif choices == 'time'
-            time_limit
-
         end
 end
 
 
 ##################################main_menu##########################
+
 def main_menu
     logo
     middle_logo
@@ -505,8 +432,7 @@ def main_menu
         menu.choice 'Feed our Kitty'
         menu.choice 'Delete Profile'
         menu.choice 'Find Kitty'
-        menu.choice 'Exit'
-        menu.choice 'time'
+        menu.choice 'Sign out'
     end
         
         if choices == 'Play with Kitty'
@@ -517,10 +443,8 @@ def main_menu
             find_kitty
         elsif choices == 'Delete Profile'
             delete_user
-        elsif choices == 'Exit'
+        elsif choices == 'Sign out'
             exit
-        elsif choices == 'time'
-            time_limit
             
         end
 end
