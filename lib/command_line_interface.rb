@@ -142,11 +142,15 @@ class CommandLineInterface
         def user_menu 
             logo 
             middle_logo
-            if time_limit == true
-                puts main_menu
-            elsif time_limit == false
-                puts "I'm sorry your kitty has died, please create another one."
-                delete_user
+            if time_fed != nil
+                if time_limit == true
+                    puts main_menu
+                elsif time_limit == false
+                    puts "I'm sorry your kitty has died, please create another one."
+                    create_kitty
+                end
+            elsif time_limit == nil
+                create_kitty
             end
         end
 
@@ -263,13 +267,6 @@ class CommandLineInterface
             end
         end
 
-        ##################################what_time_fed#########################
-
-        def what_time_fed
-            Kitty.where("time_fed like ?", "%#{@ans}%").first
-        end
-
-
         ##################################create_kitty##########################
         def create_kitty
             prompt = TTY::Prompt.new
@@ -351,11 +348,10 @@ class CommandLineInterface
         def time_limit
         
             if math > 2.minutes
-                happy = get_happiness
                 puts "Your cat has died, you waited to long to feed it :("
                 isAlive
                 sleep(3)
-                delete_user
+                create_kitty
             
             else 
                 main_menu
@@ -368,23 +364,23 @@ class CommandLineInterface
             if math > 2.minutes
                 kitty = Kitty.where("name like ?", "%#{@ans}%").ids
                 Kitty.destroy(kitty)
-                user = User.where(name: @ans1, username: @ans2).ids
-                User.destroy(user)
             end
         end
 
         #############################time fed#########################
 
         def time_fed
-            Kitty.where("name like ?", "%#{@ans}%").first.time_fed
+            if isAlive == true
+                kitty = Kitty.where("name like ?", "%#{@ans}%").first.time_fed
+                puts kitty
+            end
         end
 
         #############################find time diff#####################
 
         def math
             hungry = current_time - time_fed
-            # binding.pry
-            # puts hungry
+            puts hungry
         end
 
         ############################play with toy#####################
