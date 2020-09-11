@@ -15,9 +15,9 @@ I wanted to re-create a tamagotchi game. I have fond memories of creating and ki
 
 ## Installation
 
-Go to https://github.com/doobert0814/NEOKitties and fork the repo
+Go to https://github.com/doobert0814/NEOKitties and fork the repo.
 
-Clone the repo down to your local machine
+Clone the repo down to your local machine.
 
 Run a bundle install to install all of the gems this game requires. 
 
@@ -39,11 +39,11 @@ gem  'rspec'
 ```
 ## How to use
 
-Open the root folder called NEOKitty
+Open the root folder called NEOKitty.
 
-In the terminal type rake db:seed, this will clear out the database and repopulate it with seed data
+In the terminal type rake db:seed, this will clear out the database and repopulate it with seed data.
 
 After you get RESET on the screen, typing in ruby bin/run.rb will start the game.
 
-Following that Just follow the instructions.
+Following that just follow the instructions.
 

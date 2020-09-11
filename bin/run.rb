@@ -94,26 +94,9 @@ def exit_logo
     puts art.colorize(:blue)
 end
 
-def del_logo
-    art= <<-ARTWORK
-                  ___
-                  ,_    '---'    _,
-                  \ `-._|\_/|_.-' /
-                   |   =)'T'(=   |
-                    \   /`"`\   /
-                     '._\) (/_.'
-                         | |
-                        /\ /\
-                        \ T /
-                        (/ \)\
-                             ))
-                            ((
-                             \)
-    ARTWORK
-    puts art.colorize(:white)
-end
 ##################################landing page##########################
 def welcome
+
     logo 
     middle_logo
     bottom_text
@@ -182,7 +165,7 @@ def sub_sub_menu
         system('clear')
         log_in
     else
-        exit
+        exit_method
     end
 end
 
@@ -211,7 +194,7 @@ def create_account
         @user_created = User.create(name: "#{ans2}", username: "#{ans3}")
         create_kitty
     else 
-        exit
+        exit_method
     end
 end
 
@@ -381,14 +364,15 @@ def isAlive
     if math > 2.minutes
         kitty = Kitty.where("name like ?", "%#{@ans}%").ids
         Kitty.destroy(kitty)
+        user = User.where(name: @ans1, username: @ans2).ids
+        User.destroy(user)
     end
 end
 
 #############################time fed#########################
 
 def time_fed
-    time = Kitty.where("name like ?", "%#{@ans}%").first.time_fed
-    
+    Kitty.where("name like ?", "%#{@ans}%").first.time_fed
 end
 
 #############################find time diff#####################
@@ -424,7 +408,7 @@ def delete_user
     user = User.where(name: @ans1, username: @ans2).ids
     User.destroy(user)
     system('clear')
-    exit
+    exit_method
 end
 ##################################find_kitty##########################
 def find_kitty
@@ -484,7 +468,7 @@ def sub_menu
         elsif choices == 'Delete Profile'
             delete_user
         elsif choices == 'Exit'
-            exit
+            exit_method
         # elsif choices == 'time'
         #     time_limit
 
@@ -515,10 +499,7 @@ def main_menu
         elsif choices == 'Delete Profile'
             delete_user
         elsif choices == 'Exit'
-            exit
-        # elsif choices == 'time'
-        #     time_limit
-            
+            exit_method
         end
 end
 
@@ -526,11 +507,11 @@ end
 
 ##################################exit##########################
 
-def exit
+def exit_method
     system('clear')
     exit_logo
     sleep 3/2
-    system ('exit')
+    system('exit')
     system ('clear')
 end
 
