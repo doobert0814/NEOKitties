@@ -119,6 +119,7 @@ def log_in
     ans1 = gets.chomp
     user = User.where("username like ?", "#{ans1}").first
     if user == nil
+        system('clear')
         logo 
         middle_logo
         puts "Username not found. Please try again"
