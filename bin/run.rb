@@ -445,7 +445,6 @@ def main_menu
             delete_user
         elsif choices == 'Sign out'
             exit
-            
         end
 end
 
