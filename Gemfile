@@ -13,9 +13,7 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'require_all'
 gem 'tty-prompt'
-gem 'tty-progressbar'
 gem 'colorize'
-gem 'faker', '~> 1.6', '>= 1.6.3'
 gem  'rspec'
 
 
