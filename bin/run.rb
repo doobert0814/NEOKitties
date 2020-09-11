@@ -145,8 +145,57 @@ def welcome
     middle_logo
     bottom_text
     puts "Welcome to NEOKitty"
-    sleep(3)
-    create_account
+    sleep(2)
+    sub_sub_menu
+end
+##################################Log_in################################
+
+def log_in
+    system('clear')
+    logo 
+    middle_logo
+    bottom_text
+    puts "Please enter your username:"
+    ans1 = gets.chomp
+    user = User.where("username like ?", "#{ans1}").first
+    if user == nil
+        logo 
+        middle_logo
+        puts "Username not found. Please try again"
+        sleep(2)
+        sub_sub_menu
+    elsif ans1 == user.username
+        system('clear')
+        logo 
+        middle_logo
+        bottom_text
+        puts "Welcome Back ".colorize(:red)
+        sleep(2)
+        system('clear')
+        main_menu
+    end
+end
+
+##################################sub sub menu##########################
+def sub_sub_menu
+    system('clear')
+    logo 
+    middle_logo
+    bottom_text
+    prompt = TTY::Prompt.new
+    ans1 = prompt.select("What would you like to do?") do |menu|
+        menu.choice "Sign up"
+        menu.choice "Log in"
+        menu.choice "Exit"
+    end
+
+    if ans1 == "Sign up"
+        create_account
+    elsif ans1 == "Log in"
+        log_in
+    else
+        exit
+    end
 end
 
 ##################################create_account##########################
@@ -156,7 +205,7 @@ def create_account
     middle_logo
     bottom_text
     prompt = TTY::Prompt.new
-    ans1 = prompt.select("Would you like to make an account?") do |menu|
+    ans1 = prompt.select("Are you sure you want to create an account?") do |menu|
         menu.choice "Yes"
         menu.choice "Exit"
     end
@@ -307,7 +356,6 @@ def create_kitty
             end
             system('clear')
             main_menu
-    # system('clear')
 end
 
 
@@ -315,24 +363,44 @@ end
 
 def get_happiness
     Kitty.where("name like ?", "%#{@ans}%").first.happiness
-    #binding.pry
+end
+
+#############################current_time#####################
+
+def current_time
+    time = Time.new
+end
+#############################time limit#########################
+
+def time_limit
+
+    if math > 10
+        happy = get_happiness
+        binding.pry
+        happy -= 3
+        Kitty.update(happiness: happy)
+        full = find_value_of_food
+        full = true
+        Kitty.update(hungry: full)
+
+        puts time_limit
+    end
 
 end
 
-# ############################current_time#####################
 
-# def current_time
-#     time = Time.new
-# end
-# ############################find time diff#####################
+#############################time fed#########################
 
-# def convert_mil_to_min(time_fed, current_time)
-#     t=current_time - time_fed
-#     seconds = t/1000
-#     Time.at(seconds).strftime("%H:%M:%S")
-#     #binding.pry
-# end
+def time_fed
+    time = Kitty.where("name like ?", "%#{@ans}%").first.time_fed
+end
 
+#############################find time diff#####################
+
+def math
+    hungry = current_time - time_fed
+    puts hungry
+end
 
 ############################play with toy#####################
 
@@ -407,7 +475,7 @@ def sub_menu
         menu.choice 'Delete Profile'
         menu.choice 'Find Kitty'
         menu.choice 'Exit'
-        # menu.choice 'time'
+        menu.choice 'time'
     end
         
         if choices == 'Play with Kitty'
@@ -420,8 +488,8 @@ def sub_menu
             delete_user
         elsif choices == 'Exit'
             exit
-        # elsif choices == 'time'
-        #     convert_mil_to_min(what_time_fed, current_time)
+        elsif choices == 'time'
+            time_limit
 
         end
 end
@@ -438,7 +506,7 @@ def main_menu
         menu.choice 'Delete Profile'
         menu.choice 'Find Kitty'
         menu.choice 'Exit'
-        # menu.choice 'time'
+        menu.choice 'time'
     end
         
         if choices == 'Play with Kitty'
@@ -451,8 +519,9 @@ def main_menu
             delete_user
         elsif choices == 'Exit'
             exit
-        # elsif choices == 'time'
-        #     convert_mil_to_min(what_time_fed, current_time)
+        elsif choices == 'time'
+            time_limit
+            
         end
 end
 
